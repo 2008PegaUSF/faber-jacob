@@ -1,8 +1,15 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Scanner;
 
 import OtherPackage.ExternalClass;
 
+/**
+ * This class contains methods for every problem except for Q15 (Calculator interface) and Q18 (Abstract class extension).
+ *
+ *
+ */
 
 public class AssignmentFunctions {
 	
@@ -19,7 +26,21 @@ public class AssignmentFunctions {
 		s += "]";
 		return s;
 	}
+	
 	private String FloatArrayToString(float arr[]) {
+		String s = "[";
+		
+		for(int i = 0; i < arr.length; i++) {
+			s += arr[i];
+			if(i < arr.length-1) {
+				s += ", ";
+			}
+		}
+		s += "]";
+		return s;
+	}
+	
+	private String StringArrayToString(String arr[]) {
 		String s = "[";
 		
 		for(int i = 0; i < arr.length; i++) {
@@ -251,6 +272,7 @@ public class AssignmentFunctions {
 	public String[] Q13PrintTriangle(int size) {
 		System.out.println("=== Q13: Print Triangle ===");
 		String[] triangle = new String[size];
+		//Assemble a string array representing the triangle
 		for(int i = 0; i < size; i++) {
 			String layer = "";
 			//My formula to make each layer start in the pattern of 0 1 1 0 0 1 1 0 0 . . .
@@ -265,13 +287,67 @@ public class AssignmentFunctions {
 			
 		}
 		System.out.println("Result:");
+		//Print out the triangle based on the assembled string array
 		for(int i = 0; i < triangle.length; i++) {
 			System.out.println(triangle[i]);
 		}
 		return triangle;
 	}
 	
+	//Returns a string demonstrating the code run based on each case.
+	public String Q14DemonstrateSwitchCase(int input, int toSquare) {
+		System.out.println("=== Q14: Demonstrate Switch Case ===");
+		System.out.println("Input: " + input + " " + toSquare);
+		String result = "";
+		switch(input) {
+		case 1:
+			//Use math.sqrt to square a number.
+			result += Math.sqrt((double)toSquare);
+			break;
+		case 2:
+			//Retrieve the current date via a Date object.
+			Calendar cal = Calendar.getInstance();
+			result += cal.getTime();
+			break;
+		case 3:
+			//Convert a string to a string array using .split()
+			result += StringArrayToString("I am learning Core Java".split("\\s"));
+			break;
+		default:
+			result = "N/A";
+			break;
+		}
+		System.out.println("Result: " + result);
+		return result;
+	}
 	
+	/**Q15 is written in a separate set of files.*/
+	
+	//Returns the number of characters in a given string. The driver calls this function with args[0] as a parameter.
+	public int Q16GetCharactersInString(String str) {
+		System.out.println("=== Q16: Get Characters From String (Command Line Argument) ===");
+		int count = str.length();
+		System.out.println("Result: " + count);
+		return count;
+	}
+	
+	public double Q17CalculateInterest() {
+		System.out.println("=== Q17: Calculate Interest ===");
+		double principal, rate, time;
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter the Principal:");
+		principal = in.nextDouble();
+		System.out.println("Enter the Rate:");
+		rate = in.nextDouble();
+		System.out.println("Enter the Time:");
+		time = in.nextDouble();
+		
+		double interest = (principal * rate * time) / 100;
+		System.out.println("Interest: " + interest);
+		return interest;
+	}
+	
+	/**Q18 is written in a separate set of files.*/
 	
 }
 

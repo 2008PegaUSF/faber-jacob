@@ -21,5 +21,16 @@ public class Driver {
 		af.Q11AccessOtherPackage();
 		af.Q12PrintEvenNumbers();
 		af.Q13PrintTriangle(6);
+		af.Q14DemonstrateSwitchCase(1, 4);
+		af.Q14DemonstrateSwitchCase(2, 4);
+		af.Q14DemonstrateSwitchCase(3, 4);
+		if(args.length > 0) {
+			af.Q16GetCharactersInString(args[0]);
+		}
+		else {
+			System.out.println("No command line arguments given for Q16.");
+		}
+		af.Q17CalculateInterest();
+		
 	}
 }
