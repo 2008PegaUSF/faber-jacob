@@ -5,6 +5,7 @@
 */
 public class CustomBadTime extends Exception {
 	
+	//No-parameter constructor
 	public CustomBadTime() {
 		super();
 	}
