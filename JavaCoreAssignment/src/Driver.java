@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 public class Driver {
 	public static void main(String[] args) {
@@ -24,13 +25,21 @@ public class Driver {
 		af.Q14DemonstrateSwitchCase(1, 4);
 		af.Q14DemonstrateSwitchCase(2, 4);
 		af.Q14DemonstrateSwitchCase(3, 4);
+		//Q15 is written in filenames starting with Q15.
 		if(args.length > 0) {
 			af.Q16GetCharactersInString(args[0]);
 		}
 		else {
 			System.out.println("No command line arguments given for Q16.");
 		}
-		af.Q17CalculateInterest();
+		//af.Q17CalculateInterest();
+		af.Q19ArrayListManipulation();
 		
+		try {
+		System.out.println(af.Q20DisplayFileData("Data.txt"));
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

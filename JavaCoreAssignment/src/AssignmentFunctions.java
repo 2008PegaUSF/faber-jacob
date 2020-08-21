@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
@@ -349,10 +353,62 @@ public class AssignmentFunctions {
 	
 	/**Q18 is written in a separate set of files.*/
 	
+	//Returns two ArrayLists: the original ArrayList build at the start of the method, and another ArrayList containing the sum of evens and sum of odds.
+	public ArrayList<ArrayList<Integer>> Q19ArrayListManipulation() {
+		System.out.println("=== Q19: ArrayList Manipulation ===");
+		ArrayList<Integer> numbers = new ArrayList<Integer>();
+		int sumOfOdds = 0;
+		int sumOfEvens = 0;
+		
+		//Populate the ArrayList with initial values.
+		for(int i = 1; i <= 10; i++) {
+			numbers.add(i);
+		}
+		//Iterate through the ArrayList to collect the sums of the odd and even numbers while removing the primes.
+		
+		for(int i = 0; i < numbers.size(); i++) {
+			int current = numbers.get(i);
+			//Add each number to either sumOfEvens or sumOfOdds depending on where it belongs.
+			if(current % 2 == 0) {
+				sumOfEvens += current;
+			}
+			else {
+				sumOfOdds += current;
+			}
+			//Remove the current number if it is prime.
+			if(isPrime(current)) {
+				numbers.remove(i--);
+			}
+		}
+		System.out.println("Sum Of Odds: " + sumOfOdds + "\nSum Of Evens: " + sumOfEvens + "\nOriginal ArrayList after prime removal: " + numbers);
+		//Pack up the results of the method. The result contains numbers and a second ArraList sums, consisting of [sumOfEvens, sumOfOdds].
+		ArrayList<Integer> sums = new ArrayList<Integer>();
+		sums.add(sumOfEvens);
+		sums.add(sumOfOdds);
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		result.add(numbers);
+		result.add(sums);
+		return result;
+	}
+	
+	//Returns a string contianing text formatted from a file according to Q20 requirements.
+	public String Q20DisplayFileData(String filepath) throws IOException {
+		File f = new File(filepath);
+		Scanner scan = new Scanner(f);
+		String result = "";
+		//For each line,
+		while(scan.hasNext()) {
+			//Convert the line to a string
+			String line = scan.nextLine();
+			//Convert the string to a string array, separated by colons
+			String[] words = line.split(":");
+			//Append the properly formatted text based on the file data to the string that will be returned
+			result += "Name: " + words[0] + " " + words[1] + "\nAge: " + words[2] + " years\nState: " + words[3] + " State\n";
+		}
+		scan.close();
+		return result;
+	}
 }
-
-
-
 
 
 
