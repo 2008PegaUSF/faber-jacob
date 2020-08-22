@@ -1,4 +1,4 @@
-
+//Interface for Q15.
 public interface Q15Interface {
 	public int add(int x, int y);
 	public int subtract(int x, int y);

@@ -1,4 +1,4 @@
-
+//Subclass used to extend the abstract superclass in Q18.
 public class Q18Subclass extends Q18Superclass {
 
 	@Override

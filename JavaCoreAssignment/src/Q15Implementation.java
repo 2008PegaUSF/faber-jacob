@@ -1,4 +1,4 @@
-
+//Implementation of the interface in Q15.
 public class Q15Implementation implements Q15Interface {
 
 	@Override

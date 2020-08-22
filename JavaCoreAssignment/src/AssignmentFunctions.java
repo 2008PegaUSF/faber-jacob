@@ -31,6 +31,7 @@ public class AssignmentFunctions {
 		return s;
 	}
 	
+	//Creates a string that shows all members of an string array.
 	private String FloatArrayToString(float arr[]) {
 		String s = "[";
 		
@@ -44,6 +45,7 @@ public class AssignmentFunctions {
 		return s;
 	}
 	
+	//Creates a string that shows all members of an float array.
 	private String StringArrayToString(String arr[]) {
 		String s = "[";
 		
@@ -75,6 +77,8 @@ public class AssignmentFunctions {
 	
 	//Returns whether a given number is a prime. This is an O(n) implementation, but O(sqrt(n)) is possible in other implementations.
 	public boolean isPrime(Integer n) {
+		if(n == 1)
+			return false;
 		//Check each number from 2 to n-1. If n is divisible by one of the numbers i, then return false.
 		for(int i = 2; i <= n / 2; i++) {
 			if(n % i == 0) {
@@ -86,7 +90,7 @@ public class AssignmentFunctions {
 	}
 	
 	//Takes an integer array as an argument and sorts it
-	public void Q1BubbleSort(int arr[]) {
+	public int[] Q1BubbleSort(int arr[]) {
 		System.out.println("=== Q1: Bubble Sort ===");
 		System.out.println("Before: " + IntArrayToString(arr));
 		boolean hasSwapped = true;
@@ -106,6 +110,7 @@ public class AssignmentFunctions {
 			}//end for
 			System.out.println("Pass " + passes + ": " + IntArrayToString(arr));
 		}//end while(hasPassed)
+		return arr;
 	}//end Q1BubbleSort
 	
 	
@@ -118,8 +123,9 @@ public class AssignmentFunctions {
 		
 		//Calculate 23 more Fibonacci numbers to get 25
 		for(int i = 2; i < 25; i++) {
-			fibonacciNumbers[i] = fibonacciNumbers[i-1] + fibonacciNumbers[i-2];
+			fibonacciNumbers[i] = fibonacciNumbers[i-2] + fibonacciNumbers[i-1];
 		}
+		
 		String result = "Result: " + IntArrayToString(fibonacciNumbers);
 		System.out.println(result);
 		return fibonacciNumbers;
@@ -155,10 +161,12 @@ public class AssignmentFunctions {
 		return nFactorial;
 	}
 	
+	//Returns a substring of str from index 0 to idx-1.
 	public String Q5Substring(String str, int idx) {
 		System.out.println("=== Q5: Substring ===");
 		System.out.println("Inputs: " + str + " " + idx);
 		String strout = "";
+		//From 0 to idx-1, add each char of str to strout.
 		for(int i = 0; i < idx; i++) {
 			strout += str.charAt(i);
 		}
@@ -288,7 +296,6 @@ public class AssignmentFunctions {
 			}
 			//Add the layer to the triangle
 			triangle[i] = layer;
-			
 		}
 		System.out.println("Result:");
 		//Print out the triangle based on the assembled string array
@@ -393,6 +400,7 @@ public class AssignmentFunctions {
 	
 	//Returns a string contianing text formatted from a file according to Q20 requirements.
 	public String Q20DisplayFileData(String filepath) throws IOException {
+		System.out.println("=== Q20: Display Dile Data ===");
 		File f = new File(filepath);
 		Scanner scan = new Scanner(f);
 		String result = "";
@@ -406,6 +414,7 @@ public class AssignmentFunctions {
 			result += "Name: " + words[0] + " " + words[1] + "\nAge: " + words[2] + " years\nState: " + words[3] + " State\n";
 		}
 		scan.close();
+		System.out.println("Result: \n" + result);
 		return result;
 	}
 }

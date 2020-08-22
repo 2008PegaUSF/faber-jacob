@@ -1,10 +1,19 @@
 
 public class JointAccount extends BankAccount {
-	String username2, password2;
-
-	public JointAccount(String username, String password, String ID) {
-		super(username, password, ID);
-
+	private String username2;
+	
+	public JointAccount(String username, String username2, String ID) {
+		super(username, ID);
+		this.username2 = username2;
 	}
 
+	public JointAccount(String ID, String user1, String user2, double balance, String status) {
+		super(user1, ID, balance, status);
+		this.username2 = user2;
+	}
+		
+	public String toString() {
+		return "JointAccount[" + ID +"]";
+	}
+	
 }
