@@ -342,9 +342,15 @@ public class AssignmentFunctions {
 		return count;
 	}
 	
+	public double Q17Formula(double principal, double rate, double time) {
+		return (principal * rate * time) / 100;
+	}
+	
 	public double Q17CalculateInterest() {
 		System.out.println("=== Q17: Calculate Interest ===");
 		double principal, rate, time;
+		
+		//Get formula data from the user
 		Scanner in = new Scanner(System.in);
 		System.out.println("Enter the Principal:");
 		principal = in.nextDouble();
@@ -353,19 +359,23 @@ public class AssignmentFunctions {
 		System.out.println("Enter the Time:");
 		time = in.nextDouble();
 		
-		double interest = (principal * rate * time) / 100;
+		//Return the interest based on the formula (principal * rate * time) / 100
+		//This formula differs from the given formula in the assignment, but it provides
+		//	a mathematically correct interest rate.
+		double interest = Q17Formula(principal,rate,time);
 		System.out.println("Interest: " + interest);
 		return interest;
 	}
 	
+	
 	/**Q18 is written in a separate set of files.*/
 	
-	//Returns two ArrayLists: the original ArrayList build at the start of the method, and another ArrayList containing the sum of evens and sum of odds.
+	//Returns two ArrayLists: the original ArrayList built at the start of the method, and another ArrayList containing the sum of evens and sum of odds.
 	public ArrayList<ArrayList<Integer>> Q19ArrayListManipulation() {
 		System.out.println("=== Q19: ArrayList Manipulation ===");
 		ArrayList<Integer> numbers = new ArrayList<Integer>();
-		int sumOfOdds = 0;
-		int sumOfEvens = 0;
+		Integer sumOfOdds = 0;
+		Integer sumOfEvens = 0;
 		
 		//Populate the ArrayList with initial values.
 		for(int i = 1; i <= 10; i++) {
@@ -388,6 +398,7 @@ public class AssignmentFunctions {
 			}
 		}
 		System.out.println("Sum Of Odds: " + sumOfOdds + "\nSum Of Evens: " + sumOfEvens + "\nOriginal ArrayList after prime removal: " + numbers);
+		
 		//Pack up the results of the method. The result contains numbers and a second ArraList sums, consisting of [sumOfEvens, sumOfOdds].
 		ArrayList<Integer> sums = new ArrayList<Integer>();
 		sums.add(sumOfEvens);
