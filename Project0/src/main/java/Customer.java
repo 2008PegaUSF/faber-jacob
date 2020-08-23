@@ -6,18 +6,20 @@ import java.io.Serializable;
 
 public class Customer extends User implements Serializable {
 
-	public Customer(String username, String password) {
-		super(username, password);
-		// TODO Auto-generated constructor stub
+	public Customer(String username, String password, String realName, int age) {
+		super(username, password, realName, age);
+	}
+
+	public String toString() {
+		return "Customer[" + username + "]";
 	}
 	
-	public String applyForAccount() {
-		//TODO
+	public String getPersonalInfo() {
 		return "";
 	}
 	
-	public String toString() {
-		return "Customer[" + username + "]";
+	public boolean equals(Customer other) {
+		return this.username.equals(other.getUsername()) && this.password.equals(other.getPassword()) && this.legalName.equals(other.getLegalName()) && this.age == other.getAge();
 	}
 	
 }

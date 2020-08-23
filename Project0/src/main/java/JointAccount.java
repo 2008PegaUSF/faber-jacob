@@ -8,7 +8,7 @@ public class JointAccount extends BankAccount {
 	}
 
 	public JointAccount(String ID, String user1, String user2, double balance, String status) {
-		super(user1, ID, balance, status);
+		super(ID, user1, balance, status);
 		this.username2 = user2;
 	}
 		

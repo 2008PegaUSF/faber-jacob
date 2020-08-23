@@ -9,7 +9,7 @@ class PrintTester {
 		//Populate test files with initial data
 		
 		//BankAccount: ID, user, balance, status
-		
+		/*
 		BankAccount acc1 = new BankAccount("C0001", "customer1", 10.0, "active");
 		BankAccount acc2 = new BankAccount("C0002", "customer2", 20.0, "pending");
 		BankAccount acc3 = new BankAccount("C0003", "customer3", 30.0, "active");
@@ -27,20 +27,14 @@ class PrintTester {
 		oout.writeObject(acc2);
 		oout.writeObject(acc3);
 		oout.writeObject(acc4);
+		oout.writeObject(jacc1);
+		oout.writeObject(jacc2);
+		oout.writeObject(jacc3);
+		oout.writeObject(jacc4);
 		
 		fout.close();
 		oout.close();
-		
-		FileOutputStream fout2 = new FileOutputStream("src/test/resources/JointAccounts.txt");
-		ObjectOutputStream oout2 = new ObjectOutputStream(fout2);
-		
-		oout2.writeObject(jacc1);
-		oout2.writeObject(jacc2);
-		oout2.writeObject(jacc3);
-		oout2.writeObject(jacc4);
-		
-		fout2.close();
-		oout2.close();
+
 		
 		FileOutputStream fout3 = new FileOutputStream("src/test/resources/Users.txt");
 		ObjectOutputStream oout3 = new ObjectOutputStream(fout3);
@@ -51,10 +45,24 @@ class PrintTester {
 		
 		fout3.close();
 		oout3.close();
+		*/
 		
 		
-		ds.loadBankAccounts();
-		ds.loadUsers();
+		
+		ds.loadBankAccounts("src/test/resources/BankAccounts.txt");
+		ds.loadUsers("src/test/resources/Users.txt");
+		System.out.println("Account data after load:");
+		System.out.println(ds.getAccounts());
+		System.out.println(ds.getUsers());
+		
+		ds.saveBankAccounts("src/test/resources/SaveTestAccounts.txt");
+		ds.saveUsers("src/test/resources/SaveTestUsers.txt");
+		
+		DataService ds2 = new DataService();
+		ds2.loadBankAccounts("src/test/resources/SaveTestAccounts.txt");
+		ds2.loadUsers("src/test/resources/SaveTestUsers.txt");
+		
+		System.out.println("Account data after load from test-saved data:");
 		System.out.println(ds.getAccounts());
 		System.out.println(ds.getUsers());
 		
