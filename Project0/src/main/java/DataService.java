@@ -19,14 +19,17 @@ public class DataService {
 		users = new ArrayList<User>();
 		accounts = new ArrayList<BankAccount>();
 		applications = new ArrayList<BankAccount>();
-		
 	}
 	
 	public ArrayList<BankAccount> getAccounts() {
 		return accounts;
 	}
 	
-	public ArrayList<User> getUsers() {
+	public ArrayList<BankAccount> getApplications() {
+		return applications;
+	}
+	
+ 	public ArrayList<User> getUsers() {
 		return users;
 	}
 	
@@ -38,15 +41,24 @@ public class DataService {
 		
 		try {
 			fin = new FileInputStream(filepath);
-			oin = new ObjectInputStream(fin);
-			
-			if(fin.available() > 0) {
-				numBankAccounts = numJointAccounts = 0;
+			if(fin.available() == 0) {
+				numBankAccounts = 0;
+				numJointAccounts = 0;
+				fin.close();
+				return;
 			}
 			else {
-				numBankAccounts = oin.readInt();
-				numJointAccounts = oin.readInt();
+				oin = new ObjectInputStream(fin);
+				
+				if(fin.available() > 0) {
+					numBankAccounts = oin.readInt();
+					numJointAccounts = oin.readInt();
+					
+				}
 			}
+			
+			oin.close();
+			fin.close();
 			
 		}
 		catch (FileNotFoundException e) {
@@ -67,8 +79,9 @@ public class DataService {
 			oout.writeInt(numBankAccounts);
 			oout.writeInt(numJointAccounts);
 			
-			fout.close();
 			oout.close();
+			fout.close();
+			
 		}
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -84,6 +97,10 @@ public class DataService {
 		ObjectInputStream oin_bank;
 		try {
 			fin_bank = new FileInputStream(filepath);
+			if(fin_bank.available() == 0) {
+				fin_bank.close();
+				return;
+			}
 			oin_bank = new ObjectInputStream(fin_bank);
 			while(fin_bank.available() > 0) {
 				BankAccount nextAccount = (BankAccount)oin_bank.readObject();
@@ -100,8 +117,9 @@ public class DataService {
 				}
 			}
 			
-			fin_bank.close();
 			oin_bank.close();
+			fin_bank.close();
+			
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -113,23 +131,30 @@ public class DataService {
 	}
 	
 	//Loads all users from a file.
+	//This method looks different from the ones that use instanceof because I was trying to understand a loading-related bug.
+	/**Be sure to run SetupStaff.java to update the Employee/Admin classes if this function throws an error.*/
 	public void loadUsers(String filepath) {
 		
 		FileInputStream fin;
 		ObjectInputStream oin;
 		try {
 			fin = new FileInputStream(filepath);
+			if(fin.available() == 0) {
+				fin.close();
+				return;
+			}
 			oin = new ObjectInputStream(fin);
 			
 			while(fin.available() > 0) {
 				Object nextUser = oin.readObject();
-				if(nextUser instanceof Customer) {
+				String userClass = nextUser.getClass().getSimpleName();
+				if(userClass.equals("Customer")) {
 					users.add((Customer)nextUser);
 				}
-				else if(nextUser instanceof Employee) {
+				else if(userClass.equals("Employee")) {
 					users.add((Employee)nextUser);
 				}
-				else if(nextUser instanceof Admin) {
+				else if(userClass.equals("Admin")) {
 					users.add((Admin)nextUser);
 				}
 				else {
@@ -137,8 +162,9 @@ public class DataService {
 				} 
 			}
 			
-			fin.close();
 			oin.close();
+			fin.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -149,12 +175,17 @@ public class DataService {
 		}
 	}
 	
+	//Loads all account applicatons from a file.
 	public void loadApplications(String filepath) {
 		
 		FileInputStream fin_bank;
 		ObjectInputStream oin_bank;
 		try {
 			fin_bank = new FileInputStream(filepath);
+			if(fin_bank.available() == 0) {
+				fin_bank.close();
+				return;
+			}
 			oin_bank = new ObjectInputStream(fin_bank);
 			while(fin_bank.available() > 0) {
 				Object nextAccount = oin_bank.readObject();
@@ -169,8 +200,9 @@ public class DataService {
 				}
 			}
 			
-			fin_bank.close();
 			oin_bank.close();
+			fin_bank.close();
+			
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -180,7 +212,6 @@ public class DataService {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	//Saves all accounts to a file.
 	public void saveBankAccounts(String filepath) {
@@ -194,8 +225,9 @@ public class DataService {
 				oout.writeObject(a);
 			}
 			
-			fout.close();
 			oout.close();
+			fout.close();
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -218,8 +250,9 @@ public class DataService {
 				oout.writeObject(a);
 			}
 			
-			fout.close();
 			oout.close();
+			fout.close();
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -242,8 +275,9 @@ public class DataService {
 				oout.writeObject(u);
 			}
 			
-			fout.close();
 			oout.close();
+			fout.close();
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -253,7 +287,7 @@ public class DataService {
 		
 	}
 	
-	//Returns all accounts belonging to a customer. Will include inactive accounts if set.
+	//Returns all accounts belonging to a customer. Will include inactive accounts if includeInactive is true.
 	public ArrayList<BankAccount> getAccountsOfUser(String username, boolean includeInactive) throws InvalidClassException {
 		ArrayList<BankAccount> customerAccounts = new ArrayList<BankAccount>();
 		for(int i = 0; i < accounts.size(); i++) {
@@ -278,7 +312,7 @@ public class DataService {
 	//One username: create new BankAccount
 	public void createAccountApplication(String username) {
 		BankAccount newAccount;
-		String newID = "C" + ++numJointAccounts;
+		String newID = "C" + ++numBankAccounts;
 		newAccount = new BankAccount(newID, username, 0f, "pending");
 		applications.add(newAccount);
 	}
@@ -301,6 +335,65 @@ public class DataService {
 		Customer newCustomer = new Customer(username, password, phoneNumber, age);
 		users.add(newCustomer);
 		return true;
+	}
+	
+	public boolean isUsernameAvailable(String username) {
+		for(User u : users) {
+			if(username.equals(u.getUsername())) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	//Returns the user with that given username. Returns null if no user with that name was found.
+	public User getUserByUsername(String username) {
+		for(User u : getUsers()) {
+			if(u.getUsername().equals(username))
+				return u;
+		}
+		return null;
+	}
+	
+	//Returns the account with that given ID. Returns null if no account with that name was found.
+	public BankAccount getAccountByID(String id) {
+		for(BankAccount account : accounts) {
+			if(account.getID().equals(id))
+				return account;
+		}
+		return null;
+	}
+	
+	public BankAccount getApplicationByID(String id) {
+		for(BankAccount application : applications) {
+			if(application.getID().equals(id))
+				return application;
+		}
+		return null;
+	}
+	
+	public boolean approveApplication(String id) {
+		BankAccount toApprove = getApplicationByID(id);
+		if(toApprove == null) {
+			return false;
+		}
+		else {//Application found, approve
+			applications.remove(toApprove);
+			accounts.add(toApprove);
+			toApprove.open();
+			return true;
+		}
+	}
+	
+	public boolean denyApplication(String id) {
+		BankAccount toDeny = getApplicationByID(id);
+		if(toDeny == null) {
+			return false;
+		}
+		else {//Application found, approve
+			applications.remove(toDeny);
+			return true;
+		}
 	}
 	
 }

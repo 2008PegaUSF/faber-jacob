@@ -13,7 +13,7 @@ public class JointAccount extends BankAccount {
 	}
 		
 	public String toString() {
-		return "JointAccount[" + ID +"]";
+		return "JointAccount[" + ID + " - " + status +  "]";
 	}
 	
 }
