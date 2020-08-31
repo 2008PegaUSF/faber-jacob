@@ -57,14 +57,14 @@ public class User{
 				accountType = "Admin";
 				break;
 		}
-		return "User[Username: "+this.username+" Type: "+accountType+"]";
+		return accountType+"[Username: "+username+", Password: "+password+", Name: "+legalName+", Age: "+age+"]";
 	}
 	
 	public boolean equals(User other) {
 		return this.userID == other.getUserID() 
-				&& this.getUsername().equals(other.getUsername()) 
-				&& this.password.equals(other.getPassword()) && this.legalName == other.getLegalName() 
-				&& this.age == other.getAge() 
-				&& this.type == other.getType();
+				&& username.equals(other.getUsername()) 
+				&& password.equals(other.getPassword()) && this.legalName == other.getLegalName() 
+				&& age == other.getAge() 
+				&& type == other.getType();
 	}
 }

@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import data.UserDaoImpl;
 import data.BankAccountDaoImpl;
@@ -81,6 +82,24 @@ public class BankApp {
 			return output;
 		}
 	
+		//Used in View All Users.
+		public static void viewUsers(User currentUser, Scanner in) {
+			UserDaoImpl ud = new UserDaoImpl();
+			ArrayList<User> gatheredUsers = null;
+			gatheredUsers = (ArrayList<User>) ud.getAllUsers();
+			int column = 0;
+			System.out.println("Accounts:");
+			for(User u : gatheredUsers) {
+				System.out.print(u+" ");
+				if(++column % 5 == 0) {//Start a new line after every 5th user printed
+					System.out.println();
+				}
+			}
+			System.out.println();
+			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+			+ " has viewed all users");
+		}
+		
 		//Admin method to update a user.
 		public static void updateUser(User currentUser, Scanner in) throws SQLException {
 			UserDaoImpl ud = new UserDaoImpl();
@@ -94,17 +113,21 @@ public class BankApp {
 				return;
 			}
 			else {//User exists
+				
 				System.out.println("Choose a value to update:\n1: Username\n2: Password\n3: Legal Name\n4: Age\nEnter any other number to cancel");
 				System.out.print(currentUser.getUsername() + ">> ");
 				int userInput = validateInputInteger(in);
 				switch(userInput) {
 					case 1://Update username
+						String oldUsername = foundUser.getUsername();
 						System.out.println("Enter a new username:");
 						System.out.print(currentUser.getUsername() + ">> ");
 						String newUsername = in.nextLine();
 						if(ud.getUserByUsername(newUsername) == null) {//Username available
 							ud.updateUsername(foundUser.getUsername(), newUsername);
 							System.out.println("Username updated.");
+							log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+							+ " updated username of user " + oldUsername + " to " + newUsername);
 							//If the admin updated their own username, set the username in the console to match
 							if(newUsername.equals(currentUser.getUsername())) {
 								currentUser.setUsername(newUsername);
@@ -116,6 +139,7 @@ public class BankApp {
 							return;
 						}
 					case 2://Update password
+						String oldPassword = foundUser.getPassword();
 						System.out.println("Enter a new password:");
 						System.out.print(currentUser.getUsername() + ">> ");
 						String newPassword = in.nextLine();
@@ -126,13 +150,18 @@ public class BankApp {
 						else {//New password is long enough
 							ud.updatePassword(foundUser.getUsername(), newPassword);
 							System.out.println("Password updated.");
+							log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+							+ " has updated password of user " + foundUser.getUsername() + " to " + newPassword);
 							return;
 						}
 					case 3://Update legal name
 						System.out.println("Enter a new legal name:");
 						System.out.print(currentUser.getUsername() + ">> ");
-						ud.updateLegalName(foundUser.getUsername(), in.nextLine());
+						String newLegalName = in.nextLine();
+						ud.updateLegalName(foundUser.getUsername(), newLegalName);
 						System.out.println("Legal name updated.");
+						log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+						+ " has updated legal name of user " + foundUser.getUsername() + " to " + newLegalName);
 						break;
 					case 4://Update age
 						System.out.println("Enter a new age:");
@@ -147,6 +176,8 @@ public class BankApp {
 						}
 						ud.updateAge(foundUser.getUsername(), newAge);
 						System.out.println("Age updated.");
+						log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+						+ " has updated age of user" + foundUser.getUsername() + " to " + newAge);
 						return;
 					default:
 						System.out.println("Update cancelled.");
@@ -155,12 +186,14 @@ public class BankApp {
 			}
 		}
 		
+		//Admin method to delete a user.
 		public static void deleteUser(User currentUser, Scanner in) throws SQLException {
 			UserDaoImpl ud = new UserDaoImpl();
 			//User enters a username to delete
 			System.out.println("Enter username of user to delete. This will also delete all of their bank accounts.");
 			System.out.print(currentUser.getUsername() + ">> ");
-			User foundUser = ud.getUserByUsername(in.nextLine());
+			String userInput = in.nextLine();
+			User foundUser = ud.getUserByUsername(userInput);
 			if(foundUser == null) {//No user with that username found
 				System.out.println("User not found.");
 			}
@@ -170,9 +203,12 @@ public class BankApp {
 			else {//Deleting someone else
 				ud.deleteUserByUsername(foundUser.getUsername());
 				System.out.println("User deleted.");
+				log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+				+ " deleted user " + userInput);
 			}
 		}
 		
+		//Prints a list of a user's accounts. If the user is an admin, all accounts are printed.
 		public static void viewAccounts(User currentUser, Scanner in) throws SQLException {
 			BankAccountDaoImpl bd = new BankAccountDaoImpl();
 			ArrayList<BankAccount> gatheredAccounts = null;
@@ -196,8 +232,11 @@ public class BankApp {
 				}
 			}
 			System.out.println();
+			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+			+ " has viewed " + (currentUser.getType() == 2 ? " all " : " their ") + "accounts");
 		}
 		
+		//Allows a user to create a new individual or joint account.
 		public static void createNewAccount(User currentUser, Scanner in) throws SQLException {
 			UserDaoImpl ud = new UserDaoImpl();
 			BankAccountDaoImpl bd = new BankAccountDaoImpl();
@@ -208,6 +247,8 @@ public class BankApp {
 			case 1://Single account, 1 user
 				bd.createNewAccount(currentUser.getUserID());
 				System.out.println("New account created.");
+				log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+				+ " created a new single bank account");
 				break;
 			case 2://Joint account, 2 users
 				System.out.println("Enter the username of who you will be sharing the account with:");
@@ -217,9 +258,14 @@ public class BankApp {
 				if(otherUser == null) {//Joint user not found
 					System.out.println("That user does not exist. Account creation cancelled.");
 				}
+				else if(otherUser.getType() != 1) {//tried to open a joint account with an admin
+					System.out.println("That user is not a customer. Account creation cancelled.");
+				}
 				else {//Joint user found
 					bd.createNewJointAccount(currentUser.getUserID(), otherUser.getUserID());
 					System.out.println("New joint account created.");
+					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					+ " created a new joint bank account with user " + otherUsername);
 				}
 				break;
 			default:
@@ -230,6 +276,7 @@ public class BankApp {
 			
 		}
 		
+		//Allows a user to deposit to an account. Contains necessary input validation.
 		public static void depositToAccount(User currentUser, Scanner in) throws SQLException {
 			BankAccountDaoImpl bd = new BankAccountDaoImpl();
 			UserDaoImpl ud = new UserDaoImpl();
@@ -266,10 +313,13 @@ public class BankApp {
 				else {//Deposit amount at least zero
 					bd.depositToAccount(acc.getID(), depositAmount);
 					System.out.println("Deposit made.");
+					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					+ " deposited " + depositAmount + " to account " + acc.getID());
 				}
 			}
 		}
 		
+		//allows a user to withdraw from an account. Contains necessary input validation.
 		public static void withdrawFromAccount(User currentUser, Scanner in) throws SQLException {
 			BankAccountDaoImpl bd = new BankAccountDaoImpl();
 			UserDaoImpl ud = new UserDaoImpl();
@@ -308,10 +358,13 @@ public class BankApp {
 				else {//Withdrawal is affordable
 					bd.withdrawFromAccount(acc.getID(), withdrawAmount);
 					System.out.println("Deposit made.");
+					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					+ " withdrew " + withdrawAmount + " from account " + acc.getID());
 				}
 			}
 		}
 		
+		//Allows a user to delete an account if it is empty. Customers can only delete their own accounts.
 		public static void deleteAccount(User currentUser, Scanner in) throws SQLException {
 			BankAccountDaoImpl bd = new BankAccountDaoImpl();
 			UserDaoImpl ud = new UserDaoImpl();
@@ -330,8 +383,11 @@ public class BankApp {
 				System.out.print(currentUser.getUsername() + ">> ");
 				String confirmDelete = in.nextLine();
 				if(confirmDelete.equals("y")) {
-					bd.deleteAccount(acc.getID());
+					int toDelete = acc.getID();
+					bd.deleteAccount(toDelete);
 					System.out.println("Account deleted.");
+					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					+ " has deleted account " + toDelete);
 				}
 				else {
 					System.out.println("Deletion cancelled.");
@@ -339,6 +395,7 @@ public class BankApp {
 			}
 		}
 		
+		//Creates a new user. If isAdmin is true, then some printed messages are different.
 		public static boolean register(Scanner in, boolean isAdmin) throws SQLException {
 			UserDaoImpl ud = new UserDaoImpl();
 			//Scanner in = new Scanner(System.in);
@@ -351,6 +408,7 @@ public class BankApp {
 			//Select a username
 			while(newUsername == null) {
 				System.out.println("Please enter a username:");
+				System.out.print(">> ");
 				String chosenUsername = in.nextLine();
 				if(chosenUsername.length() < 5) {
 					System.out.println("Username must be at least 5 characters.");
@@ -370,6 +428,7 @@ public class BankApp {
 			//Select a password
 			while(newPassword == null) {
 				System.out.println("Please enter a password");
+				System.out.print(">> ");
 				String chosenPassword = in.nextLine();
 				if(chosenPassword.contains(" ")) {
 					System.out.println("Passwords cannnot contain spaces.");
@@ -389,6 +448,7 @@ public class BankApp {
 			//Enter legal name
 			while(newLegalName == null) {
 				System.out.println("Please enter your legal name:");
+				System.out.print(">> ");
 				String chosenLegalName = in.nextLine();
 				if(chosenLegalName.length() < 5) {
 					System.out.println("Legal name must be at least 5 characters.");
@@ -405,6 +465,7 @@ public class BankApp {
 			//Enter age
 			while(newAge == null) {
 				System.out.println("Please enter your age:");
+				System.out.print(">> ");
 				String chosenAge = in.nextLine();
 				if(chosenAge.equalsIgnoreCase("cancel")) {
 					return false;
@@ -421,6 +482,7 @@ public class BankApp {
 			}
 			System.out.println(isAdmin ? "New user " + newUsername + " registered." : "Thank you for registering with Faber and Warren, " + newLegalName + "! You may now log in.");
 			ud.createNewCustomer(newUsername, newPassword, newLegalName, newAge);
+			log.info("New user " + newUsername + "has been registered" + (isAdmin ? " by an administrator" : ""));
 			return true;
 		}//end register
 	
@@ -457,6 +519,8 @@ public class BankApp {
 		}
 		
 		public static void customerMenu(User currentUser, Scanner in) throws InvalidClassException, SQLException {
+			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+			+ " has logged in");
 			//log.info("Customer " + currentUser.getUsername() + " has logged in");
 			Integer userInput = null;
 			boolean hasQuit = false;
@@ -483,6 +547,8 @@ public class BankApp {
 					break;
 				case 6://Logout
 					hasQuit = true;
+					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					+ " has logged out");
 					break;
 				default://Invalid input
 					System.out.println("Please enter a number from 1 to 6.");
@@ -495,46 +561,54 @@ public class BankApp {
 			//log.info("Customer " + currentUser.getUsername() + " has logged in");
 			Integer userInput = null;
 			boolean hasQuit = false;
-	
+			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+			+ " has logged in");
 			while(!hasQuit) {
-				System.out.println("[Admin Menu]\nAvailable actions:\n1: View all accounts\n2: Create new user\n3: Update user\n4: Delete user\n5: Withdraw from account\n6: Deposit to account\n7: Delete account\n8: Quit");
+				System.out.println("[Admin Menu]\nAvailable actions:\n1: View all users\n2: View all accounts\n3: Create new user\n4: Update user\n5: Delete user\n6: Withdraw from account\n7: Deposit to account\n8: Delete account\n9: Quit");
 				System.out.print(currentUser.getUsername() + ">> ");
 				userInput = validateInputInteger(in);
 				switch(userInput) {
-				case 1://View all accounts and balances
+				case 1://View all users
+					viewUsers(currentUser, in);
+					break;
+				case 2://View all accounts and balances
 					viewAccounts(currentUser, in);
 					break;
-				case 2://Create new user
+				case 3://Create new user
 					register(in, true);
 					break;
-				case 3://Update user
+				case 4://Update user
 					updateUser(currentUser, in);
 					break;
-				case 4://Delete user
+				case 5://Delete user
 					deleteUser(currentUser, in);
 					break;
-				case 5://Withdraw from account
+				case 6://Withdraw from account
 					withdrawFromAccount(currentUser, in);
 					break;
-				case 6://Deposit to account
+				case 7://Deposit to account
 					depositToAccount(currentUser, in);
 					break;
-				case 7://Delete empty account
+				case 8://Delete empty account
 					deleteAccount(currentUser, in);
 					break;
-				case 8://Logout
+				case 9://Logout
 					hasQuit = true;
+					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					+ " has logged out");
 				default://Invalid input
-					System.out.println("Please enter a number from 1 to 8.");
+					System.out.println("Please enter a number from 1 to 9.");
 					break;
 				}
 			}
 		}//end adminMenu
 		
+		static Logger log = LogManager.getLogger(BankApp.class);
+		
 		public static void main(String[] args) throws SQLException, InvalidClassException {
 			User currentUser = null;
-			//Logger logger = LogManager.getLogger(BankApp.class);
-			//logger.debug("This is a test message!");
+			
+			Configurator.initialize(null, "log4j2.xml");		
 			
 			//Configurator.init
 			Scanner console = new Scanner(System.in);

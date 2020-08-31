@@ -1,0 +1,9 @@
+[2020-08-31T13:52:12,250 INFO ] app.BankApp - Admin
+[2020-08-31T13:52:15,985 INFO ] app.BankApp - CustomerPizzaBoy created a new single bank account
+[2020-08-31T13:52:17,489 INFO ] app.BankApp - CustomerPizzaBoy has viewed  their accounts
+[2020-08-31T13:52:26,211 INFO ] app.BankApp - CustomerPizzaBoy deposited 75.0 to account + 21
+[2020-08-31T13:52:53,777 INFO ] app.BankApp - CustomerPizzaBoy withdrawn 50.0 from account 21
+[2020-08-31T13:53:03,482 INFO ] app.BankApp - CustomerPizzaBoy created a new single bank account
+[2020-08-31T13:53:04,894 INFO ] app.BankApp - CustomerPizzaBoy has viewed  their accounts
+[2020-08-31T13:53:10,712 INFO ] app.BankApp - CustomerPizzaBoy has deleted account 22
+[2020-08-31T13:53:13,334 INFO ] app.BankApp - Admin

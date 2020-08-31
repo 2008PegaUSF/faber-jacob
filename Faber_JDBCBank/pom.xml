@@ -3,6 +3,11 @@
   <groupId>jacob.faber.revature</groupId>
   <artifactId>LastName_JDBCBank</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
   <dependencies>
   <dependency>
 		<groupId>org.apache.logging.log4j</groupId>
