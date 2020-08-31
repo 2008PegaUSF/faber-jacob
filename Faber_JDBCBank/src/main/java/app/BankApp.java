@@ -485,7 +485,8 @@ public class BankApp {
 			log.info("New user " + newUsername + "has been registered" + (isAdmin ? " by an administrator" : ""));
 			return true;
 		}//end register
-	
+		
+		//Returns a user upon successful login. Returns null if login cancelled.
 		public static User login(Scanner in) throws SQLException {
 			UserDaoImpl ud = new UserDaoImpl();
 			while(true) {
@@ -518,6 +519,7 @@ public class BankApp {
 			}
 		}
 		
+		//After a customer logs in, they are redirected here.
 		public static void customerMenu(User currentUser, Scanner in) throws InvalidClassException, SQLException {
 			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
 			+ " has logged in");
@@ -526,7 +528,7 @@ public class BankApp {
 			boolean hasQuit = false;
 	
 			while(!hasQuit) {
-				System.out.println("[Customer Menu]\nAvailable actions:\n1: Create new account\n2: View accounts\n3: Withdraw from account\n4: Deposit to account\n5: Delete account\n6: Quit");
+				System.out.println("[Customer Menu]\nAvailable actions:\n1: Create new account\n2: View accounts\n3: Withdraw from account\n4: Deposit to account\n5: Delete account\n6: Logout");
 				System.out.print(currentUser.getUsername() + ">> ");
 				userInput = validateInputInteger(in);
 				switch(userInput) {
@@ -557,6 +559,7 @@ public class BankApp {
 			}
 		}//end customerMenu
 	
+		//After an admin logs in, they are redirected here.
 		public static void adminMenu(User currentUser, Scanner in) throws InvalidClassException, SQLException {
 			//log.info("Customer " + currentUser.getUsername() + " has logged in");
 			Integer userInput = null;
@@ -564,7 +567,7 @@ public class BankApp {
 			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
 			+ " has logged in");
 			while(!hasQuit) {
-				System.out.println("[Admin Menu]\nAvailable actions:\n1: View all users\n2: View all accounts\n3: Create new user\n4: Update user\n5: Delete user\n6: Withdraw from account\n7: Deposit to account\n8: Delete account\n9: Quit");
+				System.out.println("[Admin Menu]\nAvailable actions:\n1: View all users\n2: View all accounts\n3: Create new user\n4: Update user\n5: Delete user\n6: Withdraw from account\n7: Deposit to account\n8: Delete account\n9: Logout");
 				System.out.print(currentUser.getUsername() + ">> ");
 				userInput = validateInputInteger(in);
 				switch(userInput) {

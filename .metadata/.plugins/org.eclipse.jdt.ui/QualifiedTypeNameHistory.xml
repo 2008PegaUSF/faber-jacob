@@ -2,12 +2,9 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="java.util.Deque"/>
-<fullyQualifiedTypeName name="org.junit.jupiter.api.Assertions"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
 <fullyQualifiedTypeName name="java.util.Calendar"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="org.apache.logging.log4j.core.Logger"/>
-<fullyQualifiedTypeName name="org.apache.logging.log4j.core.config.Configurator"/>
 <fullyQualifiedTypeName name="org.apache.logging.log4j.core.util.Assert"/>
 <fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.Serializable"/>
@@ -29,12 +26,16 @@
 <fullyQualifiedTypeName name="java.util.Scanner"/>
 <fullyQualifiedTypeName name="data.BankAccountDaoImpl"/>
 <fullyQualifiedTypeName name="java.io.InvalidClassException"/>
-<fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
-<fullyQualifiedTypeName name="org.apache.logging.log4j.core.appender.db.jdbc.JdbcAppender"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeAll"/>
-<fullyQualifiedTypeName name="org.junit.Assert"/>
 <fullyQualifiedTypeName name="data.UserDaoImpl"/>
 <fullyQualifiedTypeName name="org.junit.jupiter.api.AfterAll"/>
 <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.core.appender.db.jdbc.JdbcAppender"/>
+<fullyQualifiedTypeName name="java.util.logging.Logger"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.core.Logger"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.LogManager"/>
+<fullyQualifiedTypeName name="org.junit.Assert"/>
+<fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeAll"/>
+<fullyQualifiedTypeName name="org.junit.jupiter.api.Assertions"/>
+<fullyQualifiedTypeName name="org.apache.logging.log4j.core.config.Configurator"/>
 </qualifiedTypeNameHistroy>
