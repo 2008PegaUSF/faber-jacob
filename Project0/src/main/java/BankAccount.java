@@ -32,7 +32,7 @@ public class BankAccount implements Serializable {
 	}
 	
 	public String toString() {
-		return "BankAccount[" + ID + " - " + status +  "]";
+		return  ID + "[User: + " + username + " Balance: " + balance  + " Status: " + status +  "]";
 	}
 	
 	public String getID() {

@@ -1,3 +1,4 @@
+import java.io.InvalidClassException;
 import java.util.*;
 
 //StaffUsers can run any method an employee can. This is a superclass for Employee and Admin.
@@ -33,26 +34,51 @@ public class StaffUser extends User {
 		}
 		return out;
 	}
+	
+	public void viewCustomerInfo(DataService ds, Scanner in) {
+		try {
+			System.out.println("Enter a customer to lookup:");
+			User foundUser = ds.getUserByUsername(in.nextLine());
+			if(foundUser == null) {//Customer not found
+				System.out.println("User not found.");
+				return;
+			}
+			if(foundUser instanceof Customer) {//Customer found
+				ArrayList<BankAccount> userAccounts = ds.getAccountsOfUser(foundUser.getUsername(), true);
+				System.out.println(foundUser.getPersonalInfo());
+				System.out.println("Customer accounts:");
+				int column = 0;
+				for(BankAccount acc : userAccounts) {
+					System.out.println(acc + " ");
+					if(++column % 5 == 0) {
+						System.out.println("\n");
+					}
+				}
+			}
+			else {//Not a customer
+				System.out.println("That user is not a customer.");
+			}
+		}
+		catch(InvalidClassException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
-	public String viewCustomerInfo(DataService ds){
-		Scanner scan = new Scanner(System.in);
+	public void viewAccountInfo(DataService ds, Scanner scan){
 		System.out.println("Please enter an account ID");
 		String s=scan.nextLine();
 		for (BankAccount b: ds.getAccounts()){
 			if (s==b.getID()){
-				System.out.println("The balance is: " +b.getBalance());
+				System.out.println("Account balance: " +b.getBalance() + "\n" + "Account balance: " +b.getBalance() + "\n");
 			}
-			else 
-			{System.out.println("Invalid username or there is no account associated with that username");}
-		}
-		return s;
-	
+		}//end for
+		System.out.println("Invalid username or there is no account associated with that username");
 	}
 
 	public String viewAllApplications(DataService ds) {
 		int column = 0;
 		String out = "Applications:\n";
-		ArrayList<Customer> customers = new ArrayList<Customer>();
 		for(BankAccount a : ds.getApplications()) {
 				out += a.getID() + " ";
 				if(++column % 5 == 0) {

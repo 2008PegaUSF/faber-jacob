@@ -258,7 +258,7 @@ public class App {
 				System.out.println(((Employee) currentUser).viewAllCustomers(ds));
 				break;
 			case 2://View customer info
-				((Employee) currentUser).viewCustomerInfo(ds);
+				((Employee) currentUser).viewCustomerInfo(ds, in);
 				break;
 			case 3://View Applications
 				System.out.println(((Employee) currentUser).viewAllApplications(ds));
@@ -283,18 +283,19 @@ public class App {
 		boolean hasQuit = false;
 
 		while(!hasQuit) {
-			System.out.println("[Admin Menu]\nAvailable actions:\nView all customers\n2: View/edit customer info\n3: Appove/deny application\n4:Manage applications"
+			System.out.println("[Admin Menu]\nAvailable actions:\n1: View all customers\n2: View customer info \n3: View applications\n4: Appove/deny application"
 					+ "+\n5: Withdraw from account\n6: Deposit to account\n7: Transfer between accounts\n8: Open/close account\n9: Quit");
 			System.out.print(currentUser.getUsername() + ">> ");
 			userInput = validateInputInteger(in);
 			switch(userInput) {
 			case 1://View all customers
+				System.out.println(((Admin) currentUser).viewAllCustomers(ds));
 				break;
-			case 2://View/edit customer info
+			case 2://View customer info
 				break;
-			case 3://View all applications
+			case 3://View applications
 				break;
-			case 4://Approve/deny applications
+			case 4://Approve/deny application
 				break;
 			case 5://Withdraw from account
 				break;

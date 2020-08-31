@@ -1,0 +1,6 @@
+#comment
+#whitespace does matter
+#Use this url in your ConnFactory properties url
+url=jdbc:postgresql:pega2008usfjacobfaber.caxh1jvzdgas.us-east-2.rds.amazonaws.com/chinookdb
+user=chinook1
+password=p4ssw0rd
