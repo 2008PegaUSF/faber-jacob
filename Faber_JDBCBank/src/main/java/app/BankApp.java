@@ -96,7 +96,7 @@ public class BankApp {
 				}
 			}
 			System.out.println();
-			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+			log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 			+ " has viewed all users");
 		}
 		
@@ -126,7 +126,7 @@ public class BankApp {
 						if(ud.getUserByUsername(newUsername) == null) {//Username available
 							ud.updateUsername(foundUser.getUsername(), newUsername);
 							System.out.println("Username updated.");
-							log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+							log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 							+ " updated username of user " + oldUsername + " to " + newUsername);
 							//If the admin updated their own username, set the username in the console to match
 							if(newUsername.equals(currentUser.getUsername())) {
@@ -150,7 +150,7 @@ public class BankApp {
 						else {//New password is long enough
 							ud.updatePassword(foundUser.getUsername(), newPassword);
 							System.out.println("Password updated.");
-							log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+							log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 							+ " has updated password of user " + foundUser.getUsername() + " to " + newPassword);
 							return;
 						}
@@ -160,7 +160,7 @@ public class BankApp {
 						String newLegalName = in.nextLine();
 						ud.updateLegalName(foundUser.getUsername(), newLegalName);
 						System.out.println("Legal name updated.");
-						log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+						log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 						+ " has updated legal name of user " + foundUser.getUsername() + " to " + newLegalName);
 						break;
 					case 4://Update age
@@ -176,7 +176,7 @@ public class BankApp {
 						}
 						ud.updateAge(foundUser.getUsername(), newAge);
 						System.out.println("Age updated.");
-						log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+						log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 						+ " has updated age of user" + foundUser.getUsername() + " to " + newAge);
 						return;
 					default:
@@ -203,7 +203,7 @@ public class BankApp {
 			else {//Deleting someone else
 				ud.deleteUserByUsername(foundUser.getUsername());
 				System.out.println("User deleted.");
-				log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+				log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 				+ " deleted user " + userInput);
 			}
 		}
@@ -232,8 +232,8 @@ public class BankApp {
 				}
 			}
 			System.out.println();
-			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
-			+ " has viewed " + (currentUser.getType() == 2 ? " all " : " their ") + "accounts");
+			log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
+			+ " has viewed " + (currentUser.getType() == 2 ? "all " : "their ") + "accounts");
 		}
 		
 		//Allows a user to create a new individual or joint account.
@@ -247,7 +247,7 @@ public class BankApp {
 			case 1://Single account, 1 user
 				bd.createNewAccount(currentUser.getUserID());
 				System.out.println("New account created.");
-				log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+				log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 				+ " created a new single bank account");
 				break;
 			case 2://Joint account, 2 users
@@ -264,7 +264,7 @@ public class BankApp {
 				else {//Joint user found
 					bd.createNewJointAccount(currentUser.getUserID(), otherUser.getUserID());
 					System.out.println("New joint account created.");
-					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 					+ " created a new joint bank account with user " + otherUsername);
 				}
 				break;
@@ -313,7 +313,7 @@ public class BankApp {
 				else {//Deposit amount at least zero
 					bd.depositToAccount(acc.getID(), depositAmount);
 					System.out.println("Deposit made.");
-					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 					+ " deposited " + depositAmount + " to account " + acc.getID());
 				}
 			}
@@ -358,7 +358,7 @@ public class BankApp {
 				else {//Withdrawal is affordable
 					bd.withdrawFromAccount(acc.getID(), withdrawAmount);
 					System.out.println("Deposit made.");
-					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 					+ " withdrew " + withdrawAmount + " from account " + acc.getID());
 				}
 			}
@@ -386,7 +386,7 @@ public class BankApp {
 					int toDelete = acc.getID();
 					bd.deleteAccount(toDelete);
 					System.out.println("Account deleted.");
-					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 					+ " has deleted account " + toDelete);
 				}
 				else {
@@ -482,7 +482,7 @@ public class BankApp {
 			}
 			System.out.println(isAdmin ? "New user " + newUsername + " registered." : "Thank you for registering with Faber and Warren, " + newLegalName + "! You may now log in.");
 			ud.createNewCustomer(newUsername, newPassword, newLegalName, newAge);
-			log.info("New user " + newUsername + "has been registered" + (isAdmin ? " by an administrator" : ""));
+			log.info("New user " + newUsername + " has been registered" + (isAdmin ? " by an administrator" : ""));
 			return true;
 		}//end register
 		
@@ -521,7 +521,7 @@ public class BankApp {
 		
 		//After a customer logs in, they are redirected here.
 		public static void customerMenu(User currentUser, Scanner in) throws InvalidClassException, SQLException {
-			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+			log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 			+ " has logged in");
 			//log.info("Customer " + currentUser.getUsername() + " has logged in");
 			Integer userInput = null;
@@ -549,7 +549,7 @@ public class BankApp {
 					break;
 				case 6://Logout
 					hasQuit = true;
-					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 					+ " has logged out");
 					break;
 				default://Invalid input
@@ -564,7 +564,7 @@ public class BankApp {
 			//log.info("Customer " + currentUser.getUsername() + " has logged in");
 			Integer userInput = null;
 			boolean hasQuit = false;
-			log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+			log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 			+ " has logged in");
 			while(!hasQuit) {
 				System.out.println("[Admin Menu]\nAvailable actions:\n1: View all users\n2: View all accounts\n3: Create new user\n4: Update user\n5: Delete user\n6: Withdraw from account\n7: Deposit to account\n8: Delete account\n9: Logout");
@@ -597,7 +597,7 @@ public class BankApp {
 					break;
 				case 9://Logout
 					hasQuit = true;
-					log.info((currentUser.getType() == 2 ? "Admin" : "Customer ")  + currentUser.getUsername() 
+					log.info((currentUser.getType() == 2 ? "Admin " : "Customer ")  + currentUser.getUsername() 
 					+ " has logged out");
 				default://Invalid input
 					System.out.println("Please enter a number from 1 to 9.");
