@@ -91,7 +91,7 @@ public class BankApp {
 			System.out.println("Accounts:");
 			for(User u : gatheredUsers) {
 				System.out.print(u+" ");
-				if(++column % 5 == 0) {//Start a new line after every 5th user printed
+				if(++column % 3 == 0) {//Start a new line after every 3rd user printed
 					System.out.println();
 				}
 			}

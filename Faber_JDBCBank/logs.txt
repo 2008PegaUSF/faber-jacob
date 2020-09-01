@@ -7,3 +7,47 @@
 [2020-08-31T13:53:04,894 INFO ] app.BankApp - CustomerPizzaBoy has viewed  their accounts
 [2020-08-31T13:53:10,712 INFO ] app.BankApp - CustomerPizzaBoy has deleted account 22
 [2020-08-31T13:53:13,334 INFO ] app.BankApp - Admin
+[2020-09-01T15:26:54,250 INFO ] app.BankApp - New user NewUserhas been registered
+[2020-09-01T15:27:38,814 INFO ] app.BankApp - Customer NewUser has logged in
+[2020-09-01T15:29:34,855 INFO ] app.BankApp - Customer NewUser created a new single bank account
+[2020-09-01T15:29:52,790 INFO ] app.BankApp - Customer NewUser has viewed  their accounts
+[2020-09-01T15:31:35,145 INFO ] app.BankApp - Customer NewUser created a new joint bank account with user jointuser
+[2020-09-01T15:31:38,061 INFO ] app.BankApp - Customer NewUser has viewed  their accounts
+[2020-09-01T15:32:14,903 INFO ] app.BankApp - Customer NewUser has logged out
+[2020-09-01T15:32:46,089 INFO ] app.BankApp - Customer jointuser has logged in
+[2020-09-01T15:32:58,546 INFO ] app.BankApp - Customer jointuser has viewed  their accounts
+[2020-09-01T15:33:27,840 INFO ] app.BankApp - Customer jointuser has deleted account 14
+[2020-09-01T15:33:43,209 INFO ] app.BankApp - Customer jointuser withdrew 10.0 from account 11
+[2020-09-01T15:33:48,898 INFO ] app.BankApp - Customer jointuser has deleted account 11
+[2020-09-01T15:33:51,862 INFO ] app.BankApp - Customer jointuser has viewed  their accounts
+[2020-09-01T15:34:03,413 INFO ] app.BankApp - Customer jointuser withdrew 50.0 from account 19
+[2020-09-01T15:34:19,675 INFO ] app.BankApp - Customer jointuser has deleted account 19
+[2020-09-01T15:35:14,149 INFO ] app.BankApp - Customer jointuser deposited 50.0 to account 24
+[2020-09-01T15:35:15,975 INFO ] app.BankApp - Customer jointuser has viewed  their accounts
+[2020-09-01T15:37:05,760 INFO ] app.BankApp - Customer jointuser withdrew 50.0 from account 24
+[2020-09-01T15:38:33,604 INFO ] app.BankApp - Customer jointuser has deleted account 24
+[2020-09-01T15:38:37,143 INFO ] app.BankApp - Customer jointuser has viewed  their accounts
+[2020-09-01T15:39:07,945 INFO ] app.BankApp - Customer jointuser has logged out
+[2020-09-01T15:39:13,575 INFO ] app.BankApp - Adminadmin1 has logged in
+[2020-09-01T15:41:17,149 INFO ] app.BankApp - Adminadmin1 has viewed  all accounts
+[2020-09-01T15:45:30,536 INFO ] app.BankApp - Adminadmin1 has viewed all users
+[2020-09-01T15:50:52,084 INFO ] app.BankApp - Adminadmin1 has updated password of user PizzaBoy to ILovePizza
+[2020-09-01T15:52:06,511 INFO ] app.BankApp - Adminadmin1 deleted user spicyboy
+[2020-09-01T15:54:45,755 INFO ] app.BankApp - Adminadmin1 has logged out
+[2020-09-01T16:39:00,293 INFO ] app.BankApp - New user NaughtyUserhas been registered
+[2020-09-01T16:39:09,266 INFO ] app.BankApp - Customer NaughtyUser has logged in
+[2020-09-01T16:39:33,314 INFO ] app.BankApp - Customer NaughtyUser created a new joint bank account with user jointuser
+[2020-09-01T16:39:41,435 INFO ] app.BankApp - Customer NaughtyUser has viewed  their accounts
+[2020-09-01T16:39:48,574 INFO ] app.BankApp - Customer NaughtyUser has logged out
+[2020-09-01T16:39:52,692 INFO ] app.BankApp - Customer jointuser has logged in
+[2020-09-01T16:39:56,902 INFO ] app.BankApp - Customer jointuser has viewed  their accounts
+[2020-09-01T16:40:01,071 INFO ] app.BankApp - Customer jointuser has logged out
+[2020-09-01T16:40:05,104 INFO ] app.BankApp - Adminadmin1 has logged in
+[2020-09-01T16:40:15,924 INFO ] app.BankApp - Adminadmin1 deleted user NaughtyUser
+[2020-09-01T16:40:20,625 INFO ] app.BankApp - Adminadmin1 has logged out
+[2020-09-01T16:40:24,585 INFO ] app.BankApp - Customer jointuser has logged in
+[2020-09-01T16:40:25,768 INFO ] app.BankApp - Customer jointuser has viewed  their accounts
+[2020-09-01T16:41:01,939 INFO ] app.BankApp - Customer jointuser has logged out
+[2020-09-01T16:41:15,163 INFO ] app.BankApp - New user NaughtyUserhas been registered
+[2020-09-01T16:41:21,741 INFO ] app.BankApp - Customer NaughtyUser has logged in
+[2020-09-01T16:41:32,770 INFO ] app.BankApp - Customer NaughtyUser created a new joint bank account with user jointuser

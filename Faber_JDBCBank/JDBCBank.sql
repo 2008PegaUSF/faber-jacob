@@ -115,9 +115,13 @@ create or replace function delete_user_by_name(in text)
 returns integer
 as $$
 begin
-	delete from bankaccount where accId in
+	delete from bankaccount where accid in ( select accid from bankaccount where accId in
 	(select accId from useraccount where uid in
-	(select uid from bankuser where uusername = $1));
+	(select uid from bankuser where uusername = $1))
+	except
+	select accId from bankaccount where accId in
+	(select accId from useraccount where uid in
+	(select uid from bankuser where uusername != $1)));
 	delete from bankuser where uusername = $1;
 	return 1;
 end;
