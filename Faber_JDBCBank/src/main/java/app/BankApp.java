@@ -382,7 +382,7 @@ public class BankApp {
 				System.out.println("Are you sure? (y/n)");
 				System.out.print(currentUser.getUsername() + ">> ");
 				String confirmDelete = in.nextLine();
-				if(confirmDelete.equals("y")) {
+				if(confirmDelete.equalsIgnoreCase("y")) {
 					int toDelete = acc.getID();
 					bd.deleteAccount(toDelete);
 					System.out.println("Account deleted.");
@@ -616,7 +616,7 @@ public class BankApp {
 			//Configurator.init
 			Scanner console = new Scanner(System.in);
 			boolean hasQuit = false;
-			
+			System.out.println("=== DataBank(tm) ===");
 			while(!hasQuit) {
 				System.out.println("[Main Menu]\nAvailable actions:\n1: Login\n2: Register\n3: Quit");
 				System.out.print(">> ");

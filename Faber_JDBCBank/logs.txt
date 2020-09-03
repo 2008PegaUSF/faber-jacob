@@ -1,0 +1,102 @@
+[2020-09-01T19:09:25,605 INFO ] app.BankApp - New user JacobFaber has been registered
+[2020-09-01T19:09:36,019 INFO ] app.BankApp - Customer JacobFaber has logged in
+[2020-09-01T19:10:16,526 INFO ] app.BankApp - Customer JacobFaber created a new single bank account
+[2020-09-01T19:10:34,739 INFO ] app.BankApp - Customer JacobFaber created a new joint bank account with user jointuser
+[2020-09-01T19:10:38,475 INFO ] app.BankApp - Customer JacobFaber has viewed their accounts
+[2020-09-01T19:11:37,112 INFO ] app.BankApp - Customer JacobFaber has deleted account 30
+[2020-09-01T19:11:40,869 INFO ] app.BankApp - Customer JacobFaber has deleted account 29
+[2020-09-01T19:11:46,511 INFO ] app.BankApp - Customer JacobFaber has logged out
+[2020-09-01T19:18:04,438 INFO ] app.BankApp - New user BankerMan10 has been registered
+[2020-09-01T19:20:50,701 INFO ] app.BankApp - New user BankerMan11 has been registered
+[2020-09-01T19:21:02,987 INFO ] app.BankApp - Customer BankerMan11 has logged in
+[2020-09-01T19:21:22,901 INFO ] app.BankApp - Customer BankerMan11 created a new single bank account
+[2020-09-01T19:21:36,964 INFO ] app.BankApp - Customer BankerMan11 created a new joint bank account with user jointuser
+[2020-09-01T19:21:41,071 INFO ] app.BankApp - Customer BankerMan11 has viewed their accounts
+[2020-09-01T19:22:44,091 INFO ] app.BankApp - Customer BankerMan11 has logged out
+[2020-09-01T19:23:39,757 INFO ] app.BankApp - New user RevatureBanking has been registered
+[2020-09-01T19:23:56,479 INFO ] app.BankApp - Customer RevatureBanking has logged in
+[2020-09-01T19:24:18,435 INFO ] app.BankApp - Customer RevatureBanking has logged out
+[2020-09-01T19:25:40,706 INFO ] app.BankApp - New user RevBank has been registered
+[2020-09-01T19:25:51,523 INFO ] app.BankApp - Customer RevBank has logged in
+[2020-09-01T19:26:01,758 INFO ] app.BankApp - Customer RevBank created a new single bank account
+[2020-09-01T19:26:07,990 INFO ] app.BankApp - Customer RevBank has viewed their accounts
+[2020-09-01T19:26:30,757 INFO ] app.BankApp - Customer RevBank created a new joint bank account with user jointuser
+[2020-09-01T19:26:33,345 INFO ] app.BankApp - Customer RevBank has viewed their accounts
+[2020-09-01T19:28:04,357 INFO ] app.BankApp - Customer RevBank has logged out
+[2020-09-01T19:28:09,289 INFO ] app.BankApp - Customer jointuser has logged in
+[2020-09-01T19:28:13,115 INFO ] app.BankApp - Customer jointuser has viewed their accounts
+[2020-09-01T19:28:51,197 INFO ] app.BankApp - Customer jointuser has deleted account 26
+[2020-09-01T19:28:59,471 INFO ] app.BankApp - Customer jointuser has deleted account 32
+[2020-09-01T19:29:27,423 INFO ] app.BankApp - Customer jointuser deposited 50.0 to account 34
+[2020-09-01T19:29:41,810 INFO ] app.BankApp - Customer jointuser has viewed their accounts
+[2020-09-01T19:35:31,743 INFO ] app.BankApp - Customer jointuser has logged out
+[2020-09-01T19:42:12,049 INFO ] app.BankApp - New user RevBanking444 has been registered
+[2020-09-01T19:42:25,520 INFO ] app.BankApp - Customer RevBanking444 has logged in
+[2020-09-01T19:42:35,942 INFO ] app.BankApp - Customer RevBanking444 created a new single bank account
+[2020-09-01T19:42:41,994 INFO ] app.BankApp - Customer RevBanking444 has viewed their accounts
+[2020-09-01T19:43:07,643 INFO ] app.BankApp - Customer RevBanking444 created a new joint bank account with user jointuser
+[2020-09-01T19:43:15,146 INFO ] app.BankApp - Customer RevBanking444 has viewed their accounts
+[2020-09-01T19:43:31,826 INFO ] app.BankApp - Customer RevBanking444 has logged out
+[2020-09-01T19:43:42,471 INFO ] app.BankApp - Customer jointuser has logged in
+[2020-09-01T19:43:45,082 INFO ] app.BankApp - Customer jointuser has viewed their accounts
+[2020-09-01T19:44:02,455 INFO ] app.BankApp - Customer jointuser deposited 50.0 to account 36
+[2020-09-01T19:45:01,721 INFO ] app.BankApp - Customer jointuser withdrew 50.0 from account 36
+[2020-09-01T19:45:21,561 INFO ] app.BankApp - Customer jointuser has deleted account 36
+[2020-09-01T19:45:28,494 INFO ] app.BankApp - Customer jointuser has viewed their accounts
+[2020-09-01T19:45:37,639 INFO ] app.BankApp - Customer jointuser has logged out
+[2020-09-01T19:45:43,186 INFO ] app.BankApp - Admin admin1 has logged in
+[2020-09-01T19:45:54,269 INFO ] app.BankApp - Admin admin1 has viewed all accounts
+[2020-09-01T19:46:09,495 INFO ] app.BankApp - Admin admin1 has viewed all users
+[2020-09-01T19:46:48,626 INFO ] app.BankApp - Admin admin1 has updated password of user PizzaBoy to IHavePizza
+[2020-09-01T19:47:10,357 INFO ] app.BankApp - Admin admin1 deleted user RevBanking444
+[2020-09-01T19:47:14,830 INFO ] app.BankApp - Admin admin1 has viewed all users
+[2020-09-01T19:47:55,856 INFO ] app.BankApp - Admin admin1 has viewed all accounts
+[2020-09-01T19:48:15,146 INFO ] app.BankApp - Admin admin1 deposited 25.0 to account 23
+[2020-09-01T19:48:21,853 INFO ] app.BankApp - Admin admin1 has viewed all accounts
+[2020-09-01T20:33:56,743 INFO ] app.BankApp - New user RevatureBanker has been registered
+[2020-09-01T20:34:06,496 INFO ] app.BankApp - Customer RevatureBanker has logged in
+[2020-09-01T20:34:16,581 INFO ] app.BankApp - Customer RevatureBanker created a new single bank account
+[2020-09-01T20:34:22,935 INFO ] app.BankApp - Customer RevatureBanker has viewed their accounts
+[2020-09-01T20:34:49,785 INFO ] app.BankApp - Customer RevatureBanker created a new joint bank account with user jointuser
+[2020-09-01T20:35:01,712 INFO ] app.BankApp - Customer RevatureBanker has viewed their accounts
+[2020-09-01T20:35:10,928 INFO ] app.BankApp - Customer RevatureBanker has logged out
+[2020-09-01T20:35:20,524 INFO ] app.BankApp - Customer jointuser has logged in
+[2020-09-01T20:35:23,466 INFO ] app.BankApp - Customer jointuser has viewed their accounts
+[2020-09-01T20:35:43,222 INFO ] app.BankApp - Customer jointuser deposited 50.0 to account 38
+[2020-09-01T20:36:24,988 INFO ] app.BankApp - Customer jointuser has viewed their accounts
+[2020-09-01T20:36:39,166 INFO ] app.BankApp - Customer jointuser withdrew 50.0 from account 38
+[2020-09-01T20:36:51,947 INFO ] app.BankApp - Customer jointuser has deleted account 38
+[2020-09-01T20:36:56,963 INFO ] app.BankApp - Customer jointuser has viewed their accounts
+[2020-09-01T20:37:04,754 INFO ] app.BankApp - Customer jointuser has logged out
+[2020-09-01T20:37:12,415 INFO ] app.BankApp - Admin admin1 has logged in
+[2020-09-01T20:37:27,915 INFO ] app.BankApp - Admin admin1 has viewed all users
+[2020-09-01T20:37:59,524 INFO ] app.BankApp - Admin admin1 has updated password of user PizzaBoy to IDeliverPizza
+[2020-09-01T20:38:02,720 INFO ] app.BankApp - Admin admin1 has viewed all accounts
+[2020-09-01T20:38:05,942 INFO ] app.BankApp - Admin admin1 has viewed all users
+[2020-09-01T20:38:36,824 INFO ] app.BankApp - Admin admin1 deleted user RevBank
+[2020-09-01T20:39:01,780 INFO ] app.BankApp - Admin admin1 has viewed all accounts
+[2020-09-01T20:39:12,012 INFO ] app.BankApp - Admin admin1 deposited 20.0 to account 7
+[2020-09-01T20:39:16,321 INFO ] app.BankApp - Admin admin1 has viewed all accounts
+[2020-09-01T20:39:51,377 INFO ] app.BankApp - Admin admin1 has logged out
+[2020-09-01T20:40:41,981 INFO ] app.BankApp - New user NaughtyUser has been registered
+[2020-09-02T11:41:06,580 INFO ] app.BankApp - New user RevatureIsGreat has been registered
+[2020-09-02T11:41:18,658 INFO ] app.BankApp - Customer RevatureIsGreat has logged in
+[2020-09-02T11:41:35,734 INFO ] app.BankApp - Customer RevatureIsGreat created a new single bank account
+[2020-09-02T11:41:42,068 INFO ] app.BankApp - Customer RevatureIsGreat has viewed their accounts
+[2020-09-02T11:42:05,261 INFO ] app.BankApp - Customer RevatureIsGreat created a new joint bank account with user jointuser
+[2020-09-02T11:42:07,911 INFO ] app.BankApp - Customer RevatureIsGreat has viewed their accounts
+[2020-09-02T11:42:18,499 INFO ] app.BankApp - Customer RevatureIsGreat has logged out
+[2020-09-02T11:42:29,247 INFO ] app.BankApp - Customer jointuser has logged in
+[2020-09-02T11:42:31,442 INFO ] app.BankApp - Customer jointuser has viewed their accounts
+[2020-09-02T11:42:51,466 INFO ] app.BankApp - Customer jointuser deposited 50.0 to account 40
+[2020-09-02T11:43:30,801 INFO ] app.BankApp - Customer jointuser withdrew 50.0 from account 40
+[2020-09-02T11:43:55,594 INFO ] app.BankApp - Customer jointuser has deleted account 40
+[2020-09-02T11:43:58,028 INFO ] app.BankApp - Customer jointuser has viewed their accounts
+[2020-09-02T11:44:05,133 INFO ] app.BankApp - Customer jointuser has logged out
+[2020-09-02T11:44:10,449 INFO ] app.BankApp - Admin admin1 has logged in
+[2020-09-02T11:44:20,771 INFO ] app.BankApp - Admin admin1 has viewed all users
+[2020-09-02T11:44:29,034 INFO ] app.BankApp - Admin admin1 has viewed all accounts
+[2020-09-02T11:44:49,519 INFO ] app.BankApp - Admin admin1 has viewed all users
+[2020-09-02T11:45:03,294 INFO ] app.BankApp - Admin admin1 has updated password of user PizzaBoy to IActuallyHatePizza
+[2020-09-02T11:45:05,476 INFO ] app.BankApp - Admin admin1 has viewed all users
+[2020-09-02T11:45:50,483 INFO ] app.BankApp - Admin admin1 has logged out
